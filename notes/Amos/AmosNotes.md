@@ -24,5 +24,5 @@ output:
 
 `# file /bin/cat`  
 
-output:
+output:  
 `/bin/cat: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1=f2ca4d18037c2be160ba882ffbe2fbed56d60f83, for GNU/Linux 3.2.0, stripped`
