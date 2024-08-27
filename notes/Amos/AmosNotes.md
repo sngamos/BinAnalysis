@@ -51,4 +51,22 @@ Slide 6 outputs:
 
 
 
-# Appendix
+# Appendix  
+
+Executable Linkable Format: 
+> Common standard file format for executables, object code, shared libraries, and core dumps in Unix OS.  
+> Components:  
+>> **Header** --> Contains metadata about the file, including the type of ELF file (e.g executable, shared library), the architecture & other important info.  
+>> **Program Header Table** --> Describes sections of the file that needs to be loaded into memory.  
+>> **Section Header Table** --> Describes sections of the file which are used for linking and relocation.  
+>> **Sections and Segments** --> Contain actual data, code and other information necessary for execution or linking.  
+
+64-bit LSB Executable
+> refers to a executable file designed to run on a 64 bit architecture, where the system is capable of processing data in 64-bit chunks.  
+
+ABI Version (Application Binary Interface Version)  
+> set of rules or convenions that dictate how different pieces of binary code can interact with each other at low level, i.e how functions are called, how parameters are passed, how system calls are made, how data types are represented in memory.  
+> In the example above, the ABI version is `SYSV` which refers to `System V ABI`, a common standard for UNIX system.
+
+
+ 
