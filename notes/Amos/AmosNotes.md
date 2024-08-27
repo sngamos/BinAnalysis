@@ -37,8 +37,7 @@ Slide 6 outputs:
 >Explanation: 
 >> Without the `-i` option, the output is more detailed.  
 >> From the output, `/bin/cat` is a Executable and  Linkable Format (ELF) file, specifically a 64-bit least significant bit (LSB) first executable that is also PIE.
->>>See Appendix for explanations on `ELF`, `64-LSB executable` and `ABI version`.  
-Breakdown of output:  
+>> Breakdown of output:  
 >>> **Architecture:** x86-64  
 >>> **ABI version:** SYSV  
 >>> **Linking:** dynamically linked (meaning that the file depends on shared libraries)  
