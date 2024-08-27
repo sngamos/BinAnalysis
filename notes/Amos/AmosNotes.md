@@ -20,7 +20,8 @@ Slide 6 outputs:
 `# file -i /bin/cat`  
 
 output:  
-`/bin/cat: application/x-pie-executable; charset=binary`
+`/bin/cat: application/x-pie-executable; charset=binary`  
+  
 
 `# file /bin/cat`  
 
