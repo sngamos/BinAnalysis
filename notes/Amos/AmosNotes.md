@@ -17,4 +17,4 @@
 
 Slide 6 outputs:
 
-'# file -i /bin/cat' 
+`# file -i /bin/cat` 
