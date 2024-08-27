@@ -24,7 +24,7 @@ Slide 6 outputs:
 > `/bin/cat: application/x-pie-executable; charset=binary`  
 
 >Explanation:  
->> `# file -i /bin/cat`: `-i` option is used to output the `MIME` type of the file, in this case the MIME type is: `application/x-pie-executable`.  
+>> `-i` option is used to output the `MIME` type of the file, in this case the MIME type is: `application/x-pie-executable`.  
 >> This indicates `/bin/cat` is a Position Independant Executable (PIE) binary.
 >>> `MIME` types are the standard way of describing the content type of files.  
 >> The `charset=binary` indicates the files is a binary file **NOT** text file.
@@ -34,5 +34,22 @@ Slide 6 outputs:
 > output:  
 > `/bin/cat: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1=f2ca4d18037c2be160ba882ffbe2fbed56d60f83, for GNU/Linux 3.2.0, stripped`  
 
- 
+>Explanation: 
+>> Without the `-i` option, the output is more detailed.  
+>> From the output, `/bin/cat` is a Executable and  Linkable Format (ELF) file, specifically a 64-bit least significant bit (LSB) first executable that is also PIE.
+>>>>See Appendix for explanations on `ELF`, `64-LSB executable` and `ABI version`.  
+>> Breakdown of output:  
+>>> **Architecture:** x86-64  
+>>> **ABI version:** SYSV  
+>>> **Linking:** dynamically linked (meaning that the file depends on shared libraries)  
+>>> **Interpreter:** /lib64/ld-linux-x86-64.so.2 (the dynamic linker/loader)  
+>>> **BuildID:** the unique identifier for the binary  
+>>> **Compatibility:** built for GNU/Linux 3.2.0 or later  
+>>> **Stripped:** binary is stripped of debug information and symbols  
 
+
+
+
+
+
+#Appendix
