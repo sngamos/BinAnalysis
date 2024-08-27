@@ -13,7 +13,9 @@
 5. Automatic methodolgy task
 6. Adopting methodology steps  
 
-#### Following the lecture notes walkthroughs
+#### Following the lecture notes walkthroughs  
+##### Binary Discovery  
+
 
 Slide 6 outputs:
 > `file` command in Unix OS is used to determine the type of file by examining its contents rather than relying on the extensions.  
@@ -54,7 +56,7 @@ Slide 6 outputs:
 > output: a detailed list of files in /bin sorted in chronological of modication (newest to oldest).  
 
 
-
+##### Examining Binaries  
 
 
 
