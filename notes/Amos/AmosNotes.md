@@ -46,7 +46,12 @@ Slide 6 outputs:
 >>> **Compatibility:** built for GNU/Linux 3.2.0 or later  
 >>> **Stripped:** binary is stripped of debug information and symbols  
 
+`# ls -alt /bin/`
 
+> `-a` includes **all** files, including hidden files
+> `-l` shows detailed information about each file, (permissions, number of links, owner, group, size, time of last modification, and the file/directory name)
+> `-t` sorts the files by time of last modication, with most recently modified first
+> output: a detailed list of files in /bin sorted in chronological of modication (newest to oldest)
 
 
 
