@@ -24,7 +24,7 @@ Slide 6 outputs:
 > `/bin/cat: application/x-pie-executable; charset=binary`  
 
 >Explanation:  
->> `# file -i /bin/cat`: `-i` option is used to output the `MIME` type of the file, in this case the MIME type is: `application/x-pie-executable`.
+>> `# file -i /bin/cat`: `-i` option is used to output the `MIME` type of the file, in this case the MIME type is: `application/x-pie-executable`.  
 >> This indicates `/bin/cat` is a Position Independant Executable (PIE) binary.
 >>> `MIME` types are the standard way of describing the content type of files.  
 >> The `charset=binary` indicates the files is a binary file **NOT** text file.
