@@ -74,9 +74,57 @@ Notice the 32-bit is built for Intel 80386 architecture, 64-bit is built for x86
 > `strings` scans files provided for sequences of printable characters (letters, numbers, puntuation, etc) that are typically longer than 4 characters (can be adjusted with a flag).
 > typically used to scanned binary files like executable/object file.  
 
-
 output:  
 A list of elements with type `string`.  
+
+`readlef -h ch04-example`  
+> displays header information of ELF file.
+>> output: 
+>> **Magic number**: identifies the file as an ELF file  
+>> **Class**: 32-bit or 64-bit file  
+>> **Data**: Encoding type, if the file uses big or little endian byte order  
+>> **Version**: ELF version  
+>> **OS/ABI**: OS and ABI for whcih the file is intended  
+>> **Type**: if the file is executable, share library, object file, etc  
+>> **Machine**: Architecture for which the file is intended for  
+>> **Entry point access**: The memory address at which the execution starts when the file is run  
+>> **Program header offset**: Offset of the program header table in the file  
+>> **Section header offset**: Offset for suction header table in the file  
+>> **Flags**: Processor-specific flags  
+>> **Header size**: Size of the ELF header  
+>> **Program header size**: Size of each entry in program header table  
+>> **Number of program headers**: number of entries in program header table  
+>> **Section header size**: Size of each entry in the section header table  
+>> **Number of section headers**: number of entries in section header table  
+>> **Section header string table index**: The index of the section header string table, which contrains the names of the sections.  
+
+`readlef -l -W ch04-example`  
+> `-l` displays program headers  
+> `-W` enable the display of the full width of the output  
+>> output:  
+>> **Type**: Type of segement. `LOAD`: a segment that should be loaded into memory. `DYNAMIC`: dynamic linking information. `INTERP`: Interpretor information   
+>> **Offset**: the offset of the segment in the file image  
+>> **VirtAddr**: Virtual address at which the segment is loaded into memory  
+>> **PhysAddr**: Physical address for systems where physical addressing is used (however it is often the same as virtual address)  
+>> **FileSiz**: Size of the segment in the file  
+>> **MemSiz**: Size of the segment in the memory (often larger than FileSiz if the segment contains unintialized data)  
+>> **Flags**: Permissions of the segment, R/W/X  
+>> **Align**: Aligment of the segment in the memory  
+
+`readlef -S -W ch04-example`  
+> `-S` displays section headers, which describe the sections of the ELF file.  
+>> output:  
+>> **[NR]**: section index number  
+>> **Name**: name of the section (.text, .data, .bss, etc)  
+>> **Type**: type of section (PROGBITS, SYMTAB, STRTAB, NOBITS, etc)  
+>> **Addr**: address at which the section's first byte should reside in memory  
+>> **Off**: Offset of the section in the file image  
+>> **Size**: Size of the section in bytes  
+>> **ES**: Entry Size if the section holds a table of fixed-size entries  
+>> **Flg**: **A** for allocatable, **W** for writable, **X** for executable
+>> **Lk**: section table index link, such as to a related section (like a symbol table)  
+>> **Inf**: Extra info or section-dependent data  
+>> **Al**: Alignment requirement of the section
 
 
 
