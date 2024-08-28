@@ -73,6 +73,8 @@ Notice the 32-bit is built for Intel 80386 architecture, 64-bit is built for x86
 `strings ch04-example`  
 > `strings` scans files provided for sequences of printable characters (letters, numbers, puntuation, etc) that are typically longer than 4 characters (can be adjusted with a flag).
 > typically used to scanned binary files like executable/object file.  
+
+
 output:  
 A list of elements with type `string`.  
 
