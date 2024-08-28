@@ -12,8 +12,7 @@
 4. Iterating each step
 5. Automatic methodolgy task
 6. Adopting methodology steps  
-
-#### Following the lecture notes walkthroughs  
+ 
 ### Binary Discovery  
 
 
