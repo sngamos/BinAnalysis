@@ -14,7 +14,7 @@
 6. Adopting methodology steps  
 
 #### Following the lecture notes walkthroughs  
-##### Binary Discovery  
+### Binary Discovery  
 
 
 Slide 6 outputs:
@@ -56,7 +56,25 @@ Slide 6 outputs:
 > output: a detailed list of files in /bin sorted in chronological of modication (newest to oldest).  
 
 
-##### Examining Binaries  
+### Examining Binaries  
+
+`$ file 64bit/ch04-example`  
+
+output:  
+`ch04-example: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=be0fc51d5fa6803f3d477cd8eda1e41ecddab29a, not stripped`
+
+`$ file 32bit/ch04-example`  
+
+output:  
+`ch04-example: ELF 32-bit LSB executable, Intel 80386, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=791f8775cdeafe85055931846e75d1b84fee5257, not stripped`  
+
+Notice the 32-bit is built for Intel 80386 architecture, 64-bit is built for x86-64 architecture  
+
+`strings ch04-example`  
+> `strings` scans files provided for sequences of printable characters (letters, numbers, puntuation, etc) that are typically longer than 4 characters (can be adjusted with a flag).
+> typically used to scanned binary files like executable/object file.  
+output:  
+a list of elements with type `string`.  
 
 
 
