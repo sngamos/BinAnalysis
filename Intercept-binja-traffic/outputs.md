@@ -93,52 +93,75 @@ Bn-License: a5e55caa28e50ca62a4cca0452020c56
 Content-Length: 3269
 Content-Type: application/json
 
+{"messages": [{"role": "user", "content": "explain what does this main function do in detail", "address": 4553, "il_type": "HLIL", "timestamp": 1731487291, "context_tag": null}, {"role": "function", "content": "{\"id\": \"call_YkHSmRTDfwOM7vyDTybmFg5F\", \"name\": \"get_function_containing_address\", \"arguments\": {\"address\": \"0x11c9\", \"il_type\": \"HLIL\"}}", "address": 4553, "il_type": "HLIL", "timestamp": 1731487295, "context_tag": "call_YkHSmRTDfwOM7vyDTybmFg5F"}, {"role": "tool", "content": "Below is the decompiled HLIL for the function which contains address 0x11c9:\n\n11c9 | int32_t main(int32_t argc, char** argv, char** envp)\n11e4 | printf(\"Enter a string: \")\n11fc | char buf_1\n11fc | fgets(&buf_1, 0x28, __TMC_END__)\n1208 | int32_t rax_1 = strlen(&buf_1)\n1208 | \n1214 | if (rax_1 != 6)\n1420 |     puts(\"FAILURE-LVL-1: how long is your \u2026\")\n1214 | else\n1224 |     puts(\"\\n\\n\\nLevel 1 Pass: String lengt\u2026\")\n122f |     char var_47\n122f |     \n122f |     if (var_47 != 0x34)\n140f |         puts(\"FAILURE-LVL-2: Maybe the program\u2026\")\n122f |     else\n123f |         puts(\"Level 2 Pass: the character is a\u2026\")\n123f |         \n124a |         if (buf_1 != 0x33)\n13fe |             puts(\"I think if requires another char\u2026\")\n124a |         else\n125a |             puts(\"Level 2.5 Pass: You understand t\u2026\")\n1269 |             puts(\"you will be prompted to enter a \u2026\")\n1278 |             puts(\"The first key and the second key\u2026\")\n128c |             printf(\"Enter string #2: \")\n12a4 |             void buf\n12a4 |             fgets(&buf, 0x28, __TMC_END__)\n12a4 |             \n12be |             if (strlen(&buf) != rax_1)\n13ed |                 puts(\"The string length has to be the \u2026\")\n12be |             else\n130c |                 for (int32_t i = 0; i s<= 4; i += 1)\n12f1 |                     if (*(&buf + i) - 0x30 != ((&buf_1)[i] - 0x30) * 2)\n12fd |                         puts(\"FAILURE-LVL-2-Look through the l\u2026\")\n1302 |                         break\n1302 |                 \n1318 |                 puts(\"SUCCESS-LVL-3: You Did it! i hop\u2026\")\n1327 |                 puts(\"**i pray for the day crackmes.on\u2026\")\n1336 |                 puts(\"If you havent done it before thi\u2026\")\n1345 |                 puts(\"For the bonus section you need t\u2026\")\n1354 |                 puts(\"When ready type a letter then pr\u2026\")\n1368 |                 __isoc99_scanf(&data_2365)\n1368 |                 \n1374 |                 if (rax_1 != 0x1b39)\n13be |                     puts(\"FAILURE-LVL-BONUS: Forcing you t\u2026\")\n13cd |                     puts(\"Cutter is actually pretty good f\u2026\")\n13dc |                     puts(\"Wowza! https://www.megabeets.net\u2026\")\n1374 |                 else\n1380 |                     puts(\"SUCCESS-LVL-BONUS: Well damn you\u2026\")\n138f |                     puts(\"Should I make more of these?\")\n139e |                     puts(\"Probably not with the yanderedev\u2026\")\n13ad |                     puts(\"Bye! - saltedMacaroni841\")\n13ad | \n142b | return 0", "address": 4553, "il_type": "HLIL", "timestamp": 1731487295, "context_tag": "call_YkHSmRTDfwOM7vyDTybmFg5F"}]}
+```
+### Testing on follow up prompts
+File: LevelsByMacaroni841  
+Prompt: explain in detail what does this main function do in detail
+Function: main (Mem location: `000011c9`)  
+```
+POST /api/v2/notebooks/chat HTTP/2
+Host: api.sidekick.binary.ninja
+User-Agent: python-requests/2.32.3
+Accept-Encoding: gzip, deflate, br
+Accept: */*
+Connection: keep-alive
+Client-Version: 2.0.176
+Client-System: Linux
+Client-Machine: x86_64
+Client-Bn-Version: 4.1.5902
+Client-Py-Version: 3.10.12
+Api-Key: 995a7df7c7f64c3fb0e0ac8dc2397e67
+Bn-License: a5e55caa28e50ca62a4cca0452020c56
+Content-Length: 5328
+Content-Type: application/json
+
 {  
-    "messages":  
-    [  
+    "messages": [  
         {  
             "role": "user",  
-            "content": "explain in detail what does this main function do",  
+            "content": "explain what does this main function do in detail",  
             "address": 4553,  
             "il_type": "HLIL",  
-            "timestamp": 1731483877,  
+            "timestamp": 1731487291,  
             "context_tag": null  
             },  
             {  
                 "role": "function",  
-                "content":  
-                "{\"id\": \"call_XmmOIG7nQY5080MyoaGWiV9T\", \"name\": \"get_function_containing_address\", \"arguments\": {\"address\": \"0x11c9\", \"il_type\": \"HLIL\"}}",  
+                "content": "  
+                {\"id\": \"call_YkHSmRTDfwOM7vyDTybmFg5F\", \"name\": \"get_function_containing_address\", \"arguments\": {\"address\": \"0x11c9\", \"il_type\": \"HLIL\"}}",  
                 "address": 4553,  
                 "il_type": "HLIL",  
-                "timestamp": 1731483885,  
-                "context_tag": "call_XmmOIG7nQY5080MyoaGWiV9T"},  
+                "timestamp": 1731487295,  
+                "context_tag": "call_YkHSmRTDfwOM7vyDTybmFg5F"  
+                },  
                 {  
                     "role": "tool",  
-                    "content": "Below is the decompiled HLIL for the function which contains address 0x11c9:\n\n11c9 |   
-                    int32_t main(int32_t argc, char** argv, char** envp)\n11e4 |   
-                    printf(\"Enter a string: \")\n11fc |   
-                    char buf_1\n11fc |   
-                    fgets(&buf_1, 0x28, __TMC_END__)\n1208 |   
-                    int32_t rax_1 = strlen(&buf_1)\n1208 |   
-                    \n1214 |   
-                    if (rax_1 != 6)\n1420 |   
-                    puts(\"FAILURE-LVL-1: how long is your \u2026\")\n1214 |   
-                    else\n1224 |   
-                    puts(\"\\n\\n\\nLevel 1 Pass: String lengt\u2026\")\n122f |   
-                    char var_47\n122f |   
-                    \n122f |   
-                    if (var_47 != 0x34)\n140f |   
-                    puts(\"FAILURE-LVL-2: Maybe the program\u2026\")\n122f |   
-                    else\n123f |   
-                    puts(\"Level 2 Pass: the character is a\u2026\")\n123f |   
-                    \n124a |   if (buf_1 != 0x33)\n13fe |   
-                    puts(\"I think if requires another char\u2026\")\n124a |   
-                    else\n125a |   
-                    puts(\"Level 2.5 Pass: You understand t\u2026\")\n1269 |   
-                    puts(\"you will be prompted to enter a \u2026\")\n1278 |   
-                    puts(\"The first key and the second key\u2026\")\n128c |   
-                    printf(\"Enter string #2: \")\n12a4 |   
-                    void buf\n12a4 |   
+                    "content": "Below is the decompiled HLIL for the function which contains address 0x11c9:\n\n11c9 |  
+                    int32_t main(int32_t argc, char** argv, char** envp)\n11e4 |  
+                    printf(\"Enter a string: \")\n11fc |  
+                    char buf_1\n11fc |  
+                    fgets(&buf_1, 0x28, __TMC_END__)\n1208 |  
+                    int32_t rax_1 = strlen(&buf_1)\n1208 |  
+                    \n1214 |  
+                    if (rax_1 != 6)\n1420 |  
+                    puts(\"FAILURE-LVL-1: how long is your \u2026\")\n1214 |  
+                    else\n1224 |  
+                    puts(\"\\n\\n\\nLevel 1 Pass: String lengt\u2026\")\n122f |  char var_47\n122f |  
+                    \n122f |  
+                    if (var_47 != 0x34)\n140f |  
+                    puts(\"FAILURE-LVL-2: Maybe the program\u2026\")\n122f |  
+                    else\n123f |  
+                    puts(\"Level 2 Pass: the character is a\u2026\")\n123f |  
+                    \n124a |  
+                    if (buf_1 != 0x33)\n13fe |  
+                    puts(\"I think if requires another char\u2026\")\n124a |  
+                    else\n125a |  
+                    puts(\"Level 2.5 Pass: You understand t\u2026\")\n1269 |  
+                    puts(\"you will be prompted to enter a \u2026\")\n1278 |  
+                    puts(\"The first key and the second key\u2026\")\n128c |  
+                    printf(\"Enter string #2: \")\n12a4 |  
+                    void buf\n12a4 |  
                     fgets(&buf, 0x28, __TMC_END__)\n12a4 |  
                     \n12be |  
                     if (strlen(&buf) != rax_1)\n13ed |  
@@ -169,15 +192,40 @@ Content-Type: application/json
                     return 0",  
                     "address": 4553,  
                     "il_type": "HLIL",  
-                    "timestamp": 1731483885,  
-                    "context_tag": "call_XmmOIG7nQY5080MyoaGWiV9T"
-                }  
-            ]  
-        }
+                    "timestamp": 1731487349,  
+                    "context_tag": "call_YkHSmRTDfwOM7vyDTybmFg5F"  
+                    },  
+                    {  
+                        "role": "sidekick",  
+                        "content": "The `main` function appears to be a multi-level challenge or validation routine. Here's a detailed breakdown:\n\n  
+                        1. **Input Prompt**: The user is prompted to enter a string.\n\n  
+                        2. **Level 1 Check**: \n   - The program reads a string into `buf_1` and checks its length.\n   - If the length is not 6, it prints a failure message for Level 1.\n   - If the length is 6, it proceeds to Level 2.\n\n  
+                        3. **Level 2 Check**:\n   - It checks if a specific character (`var_47`) is equal to `0x34`.\n   - If not, it prints a failure message for Level 2.\n   - If it is, it proceeds to Level 2.5.\n\n  
+                        4. **Level 2.5 Check**:\n   - It checks if the first character of `buf_1` is `0x33`.\n   - If not, it prints a failure message.\n   - If it is, it proceeds to the next stage.\n\n  
+                        5. **Second Input Prompt**:\n   - The user is prompted to enter a second string.\n\n  
+                        6. **Level 3 Check**:\n   - It checks if the length of the second string matches the length of the first string.\n   - If not, it prints a failure message.\n   - If it matches, it performs a loop to check if each character of the second string, when adjusted, matches twice the corresponding character of the first string.\n   - If any character fails this check, it prints a failure message and breaks the loop.\n   - If all checks pass, it prints a success message for Level 3.\n\n  
+                        7. **Bonus Level Check**:\n   - The user is prompted to enter a value.\n   - It checks if the length of the first string (`rax_1`) is `0x1b39`.\n   
+                        - If not, it prints a failure message for the bonus level.\n   
+                        - If it matches, it prints a success message for the bonus level.\n\n  
+                        Finally, the function returns 0, indicating successful execution.",  
+                        "address": 4553,  
+                        "il_type": "HLIL",  
+                        "timestamp": 1731487308,  
+                        "context_tag": null},  
+                        {"role": "user",  
+                        "content":  
+                        "provide step by step guide and instructions to solve this crackme",  
+                        "address": 4553,  
+                        "il_type": "HLIL",  
+                        "timestamp": 1731487349,  
+                        "context_tag": null  
+                    }  
+                ],  
+                "location": {"address": 4553, "il_type": "HLIL", "func_name": "main", "lines": []}}
 ```
 ### Testing on LLIL
 File: LevelsByMacaroni841  
-Prompt: explain in detail what does this main function do
+Prompt: explain in detail what does this main function do --> provide step by step guide and instructions to solve this crackme
 Function: main (Mem location: `000011c9`)
 ```
 POST /api/v2/notebooks/title HTTP/2
