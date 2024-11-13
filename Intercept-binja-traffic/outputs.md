@@ -303,6 +303,9 @@ Content-Type: application/json
                 "location": {"address": 4553, "il_type": "HLIL", "func_name": "main", "lines": []}}
 ```
 #### 2nd follow up prompt
+File: LevelsByMacaroni841  
+Prompt: explain in detail what does this main function do in detail --> provide step by step instructions to solve this crackme --> it should take in 5 characters not 6, give me an updated answer
+Function: main (Mem location: `000011c9`) 
 ```
 POST /api/v2/notebooks/chat HTTP/2
 Host: api.sidekick.binary.ninja
