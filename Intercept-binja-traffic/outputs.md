@@ -71,6 +71,7 @@ Inspect the contents of the request by clicking on it.
 
 
 ## Examples or outputs
+### Testing on HLIL
 File: LevelsByMacaroni841  
 Prompt: explain in detail what does this main function do
 Function: main (Mem location: `000011c9`)
@@ -104,69 +105,260 @@ Content-Type: application/json
             "context_tag": null  
             },  
             {  
-            "role": "function",  
-            "content":  
-            "{\"id\": \"call_XmmOIG7nQY5080MyoaGWiV9T\", \"name\": \"get_function_containing_address\", \"arguments\": {\"address\": \"0x11c9\", \"il_type\": \"HLIL\"}}",  
+                "role": "function",  
+                "content":  
+                "{\"id\": \"call_XmmOIG7nQY5080MyoaGWiV9T\", \"name\": \"get_function_containing_address\", \"arguments\": {\"address\": \"0x11c9\", \"il_type\": \"HLIL\"}}",  
+                "address": 4553,  
+                "il_type": "HLIL",  
+                "timestamp": 1731483885,  
+                "context_tag": "call_XmmOIG7nQY5080MyoaGWiV9T"},  
+                {  
+                    "role": "tool",  
+                    "content": "Below is the decompiled HLIL for the function which contains address 0x11c9:\n\n11c9 |   
+                    int32_t main(int32_t argc, char** argv, char** envp)\n11e4 |   
+                    printf(\"Enter a string: \")\n11fc |   
+                    char buf_1\n11fc |   
+                    fgets(&buf_1, 0x28, __TMC_END__)\n1208 |   
+                    int32_t rax_1 = strlen(&buf_1)\n1208 |   
+                    \n1214 |   
+                    if (rax_1 != 6)\n1420 |   
+                    puts(\"FAILURE-LVL-1: how long is your \u2026\")\n1214 |   
+                    else\n1224 |   
+                    puts(\"\\n\\n\\nLevel 1 Pass: String lengt\u2026\")\n122f |   
+                    char var_47\n122f |   
+                    \n122f |   
+                    if (var_47 != 0x34)\n140f |   
+                    puts(\"FAILURE-LVL-2: Maybe the program\u2026\")\n122f |   
+                    else\n123f |   
+                    puts(\"Level 2 Pass: the character is a\u2026\")\n123f |   
+                    \n124a |   if (buf_1 != 0x33)\n13fe |   
+                    puts(\"I think if requires another char\u2026\")\n124a |   
+                    else\n125a |   
+                    puts(\"Level 2.5 Pass: You understand t\u2026\")\n1269 |   
+                    puts(\"you will be prompted to enter a \u2026\")\n1278 |   
+                    puts(\"The first key and the second key\u2026\")\n128c |   
+                    printf(\"Enter string #2: \")\n12a4 |   
+                    void buf\n12a4 |   
+                    fgets(&buf, 0x28, __TMC_END__)\n12a4 |  
+                    \n12be |  
+                    if (strlen(&buf) != rax_1)\n13ed |  
+                    puts(\"The string length has to be the \u2026\")\n12be |  
+                    else\n130c |  
+                    for (int32_t i = 0; i s<= 4; i += 1)\n12f1 |  
+                    if (*(&buf + i) - 0x30 != ((&buf_1)[i] - 0x30) * 2)\n12fd |  
+                    puts(\"FAILURE-LVL-2-Look through the l\u2026\")\n1302 |  
+                    break\n1302 |  
+                    \n1318 |  
+                    puts(\"SUCCESS-LVL-3: You Did it! i hop\u2026\")\n1327 |  
+                    puts(\"**i pray for the day crackmes.on\u2026\")\n1336 |  
+                    puts(\"If you havent done it before thi\u2026\")\n1345 |  
+                    puts(\"For the bonus section you need t\u2026\")\n1354 |  
+                    puts(\"When ready type a letter then pr\u2026\")\n1368 |  
+                    __isoc99_scanf(&data_2365)\n1368 |  
+                    \n1374 |  
+                    if (rax_1 != 0x1b39)\n13be |  
+                    puts(\"FAILURE-LVL-BONUS: Forcing you t\u2026\")\n13cd |  
+                    puts(\"Cutter is actually pretty good f\u2026\")\n13dc |  
+                    puts(\"Wowza! https://www.megabeets.net\u2026\")\n1374 |  
+                    else\n1380 |  
+                    puts(\"SUCCESS-LVL-BONUS: Well damn you\u2026\")\n138f |  
+                    puts(\"Should I make more of these?\")\n139e |  
+                    puts(\"Probably not with the yanderedev\u2026\")\n13ad |  
+                    puts(\"Bye! - saltedMacaroni841\")\n13ad |  
+                    \n142b |  
+                    return 0",  
+                    "address": 4553,  
+                    "il_type": "HLIL",  
+                    "timestamp": 1731483885,  
+                    "context_tag": "call_XmmOIG7nQY5080MyoaGWiV9T"
+                }  
+            ]  
+        }
+```
+### Testing on LLIL
+File: LevelsByMacaroni841  
+Prompt: explain in detail what does this main function do
+Function: main (Mem location: `000011c9`)
+```
+POST /api/v2/notebooks/title HTTP/2
+Host: api.sidekick.binary.ninja
+User-Agent: python-requests/2.32.3
+Accept-Encoding: gzip, deflate, br
+Accept: */*
+Connection: keep-alive
+Client-Version: 2.0.176
+Client-System: Linux
+Client-Machine: x86_64
+Client-Bn-Version: 4.1.5902
+Client-Py-Version: 3.10.12
+Api-Key: 995a7df7c7f64c3fb0e0ac8dc2397e67
+Bn-License: a5e55caa28e50ca62a4cca0452020c56
+Content-Length: 4235
+Content-Type: application/json
+
+{  
+    "messages":[  
+        {  
+            "role": "user",  
+            "content": "explain what does the main function do and elaborate in detail",  
             "address": 4553,  
-            "il_type": "HLIL",  
-            "timestamp": 1731483885,  
-            "context_tag": "call_XmmOIG7nQY5080MyoaGWiV9T"},  
-            {  
-            "role": "tool",  
-            "content": "Below is the decompiled HLIL for the function which contains address 0x11c9:\n\n11c9 |  
-            int32_t main(int32_t argc, char** argv, char** envp)\n11e4 |  
-            printf(\"Enter a string: \")\n11fc |  
-            char buf_1\n11fc |  
-            fgets(&buf_1, 0x28, __TMC_END__)\n1208 |  
-            int32_t rax_1 = strlen(&buf_1)\n1208 |  
-            \n1214 |  
-            if (rax_1 != 6)\n1420 |  
-            puts(\"FAILURE-LVL-1: how long is your \u2026\")\n1214 |  
-            else\n1224 |  
-            puts(\"\\n\\n\\nLevel 1 Pass: String lengt\u2026\")\n122f |  
-            char var_47\n122f |  
-            \n122f |  
-            if (var_47 != 0x34)\n140f |  
-            puts(\"FAILURE-LVL-2: Maybe the program\u2026\")\n122f |  
-            else\n123f |  
-            puts(\"Level 2 Pass: the character is a\u2026\")\n123f |  
-            \n124a |  if (buf_1 != 0x33)\n13fe |  
-            puts(\"I think if requires another char\u2026\")\n124a |  
-            else\n125a |  
-            puts(\"Level 2.5 Pass: You understand t\u2026\")\n1269 |  
-            puts(\"you will be prompted to enter a \u2026\")\n1278 |  
-            puts(\"The first key and the second key\u2026\")\n128c |  
-            printf(\"Enter string #2: \")\n12a4 |  
-            void buf\n12a4 |  
-            fgets(&buf, 0x28, __TMC_END__)\n12a4 |  
-            \n12be |  
-            if (strlen(&buf) != rax_1)\n13ed |  
-            puts(\"The string length has to be the \u2026\")\n12be |  
-            else\n130c |  
-            for (int32_t i = 0; i s<= 4; i += 1)\n12f1 |  
-            if (*(&buf + i) - 0x30 != ((&buf_1)[i] - 0x30) * 2)\n12fd |  
-            puts(\"FAILURE-LVL-2-Look through the l\u2026\")\n1302 |  
-            break\n1302 |  
-            \n1318 |  
-            puts(\"SUCCESS-LVL-3: You Did it! i hop\u2026\")\n1327 |  
-            puts(\"**i pray for the day crackmes.on\u2026\")\n1336 |  
-            puts(\"If you havent done it before thi\u2026\")\n1345 |  
-            puts(\"For the bonus section you need t\u2026\")\n1354 |  
-            puts(\"When ready type a letter then pr\u2026\")\n1368 |  
-            __isoc99_scanf(&data_2365)\n1368 |  
-            \n1374 |  
-            if (rax_1 != 0x1b39)\n13be |  
-            puts(\"FAILURE-LVL-BONUS: Forcing you t\u2026\")\n13cd |  
-            puts(\"Cutter is actually pretty good f\u2026\")\n13dc |  
-            puts(\"Wowza! https://www.megabeets.net\u2026\")\n1374 |  
-            else\n1380 |  
-            puts(\"SUCCESS-LVL-BONUS: Well damn you\u2026\")\n138f |  
-            puts(\"Should I make more of these?\")\n139e |  
-            puts(\"Probably not with the yanderedev\u2026\")\n13ad |  
-            puts(\"Bye! - saltedMacaroni841\")\n13ad |  
-            \n142b |  
-            return 0", "address": 4553, "il_type": "HLIL", "timestamp": 1731483885, "context_tag": "call_XmmOIG7nQY5080MyoaGWiV9T"}]  
+            "il_type": "LLIL",  
+            "timestamp": 1731484928,  
+            "context_tag": null  
+            },  
+            { 
+                "role": "function",  
+                "content":  
+                "{\"id\": \"call_6nqRjSuaGq2IFP3s8iwND1iA\", \"name\": \"get_function_containing_address\", \"arguments\": {\"address\": \"0x11c9\", \"il_type\": \"LLIL\"}}",  
+                "address": 4553,  
+                "il_type": "LLIL",  
+                "timestamp": 1731484936,  
+                "context_tag": "call_6nqRjSuaGq2IFP3s8iwND1iA"  
+                },  
+                {  
+                    "role": "tool",  
+                    "content": "Below is the decompiled LLIL for the function which contains address 0x11c9:\n\n11c9 |  
+                    int32_t main(int32_t argc, char** argv, char** envp)\n11cd |  
+                    push(rbp)\n11ce |  
+                    rbp = rsp {__saved_rbp}\n11d1 |  
+                    rsp = rsp - 0x70\n11d5 |  
+                    rax = &data_2008\n11dc |  
+                    rdi = rax\n11df |  
+                    eax = 0\n11e4 |  
+                    call(printf)\n11e9 |  
+                    rdx = [&__TMC_END__].q\n11f0 |  
+                    rax = rbp - 0x40 {buf_1}\n11f4 |  
+                    esi = 0x28\n11f9 |  
+                    rdi = rax {buf_1}\n11fc |  
+                    call(fgets)\n1201 |  
+                    rax = rbp - 0x40 {buf_1}\n1205 |  
+                    rdi = rax {buf_1}\n1208 |  
+                    call(strlen)\n120d |  
+                    [rbp - 8 {var_10}].d = eax\n1214 |  
+                    if ([rbp - 8 {var_10}].d != 6) then 17 @ 0x1416 else 21 @ 0x121a\n1416 |  
+                    rax = &data_25c0\n141d |  
+                    rdi = rax\n1420 |  
+                    call(puts)\n1420 |  
+                    goto 26 @ 0x1425\n121a |  
+                    rax = &data_2020\n1221 |  
+                    rdi = rax\n1224 |  
+                    call(puts)\n1229 |  
+                    eax = zx.d([rbp - 0x3f {var_47}].b)\n122f |  
+                    if (al != 0x34) then 30 @ 0x1405 else 34 @ 0x1235\n1425 |  
+                    eax = 0\n142a |  
+                    rsp = rbp\n142a |  
+                    rbp = pop\n142b |  
+                    <return> jump(pop)\n1405 |  
+                    rax = &data_2560\n140c |  
+                    rdi = rax\n140f |  
+                    call(puts)\n1414 |  
+                    goto 26 @ 0x1425\n1235 |  
+                    rax = &data_2050\n123c |  
+                    rdi = rax\n123f |  
+                    call(puts)\n1244 |  
+                    eax = zx.d([rbp - 0x40 {buf_1}].b)\n124a |  
+                    if (al != 0x33) then 39 @ 0x13f4 else 43 @ 0x1250\n13f4 |  
+                    rax = &data_2518\n13fb |  
+                    rdi = rax\n13fe |  
+                    call(puts)\n1403 |  
+                    goto 26 @ 0x1425\n1250 |  
+                    rax = &data_2080\n1257 |  
+                    rdi = rax\n125a |  
+                    call(puts)\n125f |  
+                    rax = &data_20b8\n1266 |  
+                    rdi = rax\n1269 |  
+                    call(puts)\n126e |  
+                    rax = &data_2100\n1275 |  
+                    rdi = rax\n1278 |  
+                    call(puts)\n127d |  
+                    rax = &data_2157\n1284 |  
+                    rdi = rax\n1287 |  
+                    eax = 0\n128c |  
+                    call(printf)\n1291 |  
+                    rdx = [&__TMC_END__].q\n1298 |  
+                    rax = rbp - 0x70 {buf}\n129c |  
+                    esi = 0x28\n12a1 |  
+                    rdi = rax {buf}\n12a4 |  
+                    call(fgets)\n12a9 |  
+                    rax = rbp - 0x70 {buf}\n12ad |  
+                    rdi = rax {buf}\n12b0 |  
+                    call(strlen)\n12b5 |  
+                    [rbp - 0xc {var_14_1}].d = eax\n12b8 |  
+                    eax = [rbp - 0xc {var_14_1}].d\n12be |  
+                    if (eax != [rbp - 8 {var_10}].d) then 67 @ 0x13e3 else 71 @ 0x12c4\n13e3 |  
+                    rax = &data_24f0\n13ea |  
+                    rdi = rax\n13ed |  
+                    call(puts)\n13f2 |  
+                    goto 26 @ 0x1425\n12c4 |  
+                    [rbp - 4 {i}].d = 0\n12cb |  
+                    goto 73 @ 0x130c\n130c |  
+                    if ([rbp - 4 {i}].d s<= 4) then 74 @ 0x12cd else 86 @ 0x130e\n12cd |  
+                    eax = [rbp - 4 {i}].d\n12d0 |  
+                    rax = sx.q(eax)\n12d2 |  
+                    eax = zx.d([rbp + rax - 0x70].b)\n12d7 |  
+                    eax = sx.d(al)\n12da |  
+                    edx = (rax - 0x30).d\n12dd |  
+                    eax = [rbp - 4 {i}].d\n12e0 |  
+                    rax = sx.q(eax)\n12e2 |  
+                    eax = zx.d([rbp + rax - 0x40].b)\n12e7 |  
+                    eax = sx.d(al)\n12ea |  
+                    eax = eax - 0x30\n12ed |  
+                    eax = eax + eax\n12f1 |  
+                    if (edx == eax) then 106 @ 0x1304 else 108 @ 0x12f3\n130e |  
+                    rax = &data_21d0\n1315 |  
+                    rdi = rax\n1318 |  
+                    call(puts)\n131d |  
+                    rax = &data_2210\n1324 |  
+                    rdi = rax\n1327 |  
+                    call(puts)\n132c |  
+                    rax = &data_2268\n1333 |  
+                    rdi = rax\n1336 |  
+                    call(puts)\n133b |  
+                    rax = &data_22c0\n1342 |  
+                    rdi = rax\n1345 |  
+                    call(puts)\n134a |  
+                    rax = &data_2320\n1351 |  
+                    rdi = rax\n1354 |  
+                    call(puts)\n1359 |  
+                    rax = &data_2365\n1360 |  
+                    rdi = rax\n1363 |  
+                    eax = 0\n1368 |  
+                    call(__isoc99_scanf)\n1374 |  
+                    if ([rbp - 8 {var_10}].d != 0x1b39) then 112 @ 0x13b4 else 122 @ 0x1376\n1304 |  
+                    [rbp - 4 {i}].d = [rbp - 4 {i}].d + 1\n1304 |  
+                    goto 73 @ 0x130c\n12f3 |  
+                    rax = &data_2170\n12fa |  
+                    rdi = rax\n12fd |  
+                    call(puts)\n1302 |  
+                    goto 86 @ 0x130e\n13b4 |  
+                    rax = &data_2430\n13bb |  
+                    rdi = rax\n13be |  
+                    call(puts)\n13c3 |  
+                    rax = &data_2480\n13ca |  
+                    rdi = rax\n13cd |  
+                    call(puts)\n13d2 |  
+                    rax = &data_24a8\n13d9 |  
+                    rdi = rax\n13dc |  
+                    call(puts)\n13e1 |  
+                    goto 26 @ 0x1425\n1376 |  
+                    rax = &data_2368\n137d |  
+                    rdi = rax\n1380 |  
+                    call(puts)\n1385 |  
+                    rax = &data_2390\n138c |  
+                    rdi = rax\n138f |  
+                    call(puts)\n1394 |  
+                    rax = &data_23b0\n139b |  
+                    rdi = rax\n139e |  
+                    call(puts)\n13a3 |  
+                    rax = &data_2415\n13aa |  
+                    rdi = rax\n13ad |  
+                    call(puts)\n13b2 |  
+                    goto 26 @ 0x1425",  
+                    "address": 4553,  
+                    "il_type": "LLIL",  
+                    "timestamp": 1731484936,  
+                    "context_tag": "call_6nqRjSuaGq2IFP3s8iwND1iA"  
+                    }  
+                ]  
             }
 ```
-
-
