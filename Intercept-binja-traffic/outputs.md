@@ -73,7 +73,7 @@ Inspect the contents of the request by clicking on it.
 ## Examples or outputs
 ### Testing on HLIL
 File: LevelsByMacaroni841  
-Prompt: explain in detail what does this main function do
+Prompt: `explain in detail what does this main function do`
 Function: main (Mem location: `000011c9`)
 output:
 ```
@@ -176,7 +176,7 @@ Content-Type: application/json
 ### Testing on follow up prompts
 #### 1st follow up prompt
 File: LevelsByMacaroni841  
-Prompt: explain in detail what does this main function do in detail --> provide step by step instructions to solve this crackme
+Prompt: `explain in detail what does this main function do in detail` --> `provide step by step instructions to solve this crackme`
 Function: main (Mem location: `000011c9`)  
 ```
 POST /api/v2/notebooks/chat HTTP/2
@@ -304,7 +304,7 @@ Content-Type: application/json
 ```
 #### 2nd follow up prompt
 File: LevelsByMacaroni841  
-Prompt: explain in detail what does this main function do in detail --> provide step by step instructions to solve this crackme --> it should take in 5 characters not 6, give me an updated answer
+Prompt: `explain in detail what does this main function do in detail` --> `provide step by step instructions to solve this crackme` --> `it should take in 5 characters not 6, give me an updated answer`
 Function: main (Mem location: `000011c9`) 
 ```
 POST /api/v2/notebooks/chat HTTP/2
