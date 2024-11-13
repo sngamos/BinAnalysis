@@ -660,3 +660,21 @@ Content-Type: application/json
                 ]  
             }
 ```
+## Observations:
+Type of request: `POST`  
+API URL: `api.sidekick.binary.ninja/api/v2/notebooks/title`  
+Sidekick uses `python-requests` version: `2.32.2` library  
+Request contains API key as a Header, for verification purpose
+Response server is run on uvicorn
+Prompts are in the following json format:
+```
+{
+    "messages": [
+        "role": "user",
+        "content": "<prompt plaintext>",
+        "address": <mem address of function in decimal format>
+        "il_type": <HLIL/LLIL/etc>
+        "timestamp": <time>
+        "context_tag": <call_<some seemingly random hash tagged to the context>> #context_tag will be repeated in subsequent prompts.
+    ]
+    }
