@@ -99,7 +99,8 @@ Content-Type: application/json
             "role": "user", 
             "content": "explain what does this main function do in detail", 
             "address": 4553, "il_type": "HLIL", 
-            "timestamp": 1731487291, "context_tag": null}, 
+            "timestamp": 1731487291, 
+            "context_tag": null}, 
             {
                 "role": "function", 
                 "content": 
@@ -670,11 +671,63 @@ Prompts are in the following json format:
 ```
 {
     "messages": [
-        "role": "user",
-        "content": "<prompt plaintext>",
-        "address": <mem address of function in decimal format>
-        "il_type": <HLIL/LLIL/etc>
-        "timestamp": <time>
-        "context_tag": <call_<some seemingly random hash tagged to the context>> #context_tag will be repeated in subsequent prompts.
-    ]
+        {
+            "role": "user",
+            "content": "<FIRST PROMPT IN PLAINTEXT",
+            "address": <mem address of function in decimal format>
+            "il_type": <HLIL/LLIL/etc>
+            "timestamp": <time>
+            "context_tag": null #usually null for role: "user"
+        },
+        { 
+            "role": "function",
+            "content": "{\"id": \"<context_tag>", \"name": \"get_function_containing_address", \"arguments\": {\"address\": \"<memory address in hex form">, \"il_type\": \"<IL type>\"}}",
+            "address" : <mem address of function in decimal format>
+            "il_type": "<HLIL/LLIL/etc>"
+            "timestamp": <time>
+            "context_tag": "call_<some hash value used to identify this context>
+        },
+        {
+            "role": "tool",
+            "content": "Below is the decompiled HLIL for the function which contains address <address in hex>: <decompiled target function in plaintext>"
+            "address": <mem address of function in decimal>
+            "il_type": "HLIL/LLIL/etc",
+            "timestamp": <time>,
+            "context_tag": "call_<same hash value as that in function>"
+        },
+        {
+            "role": "sidekick",
+            "content": "<REPSONSE FROM SIDEKICK TO FIRST PROMPT IN PLAINTEXT>",
+            "address": <mem address of function in decimal>
+            "il_type": <HLIL/LLIL/etc>
+            "timestamp": <time>
+            "context_tag": null #usually null for "sidekick"
+        },
+        {
+            "role": "user",
+            "content": "<SECOND PROMPT IN PLAINTEXT>",
+            "address": <mem address of function in decimal format>
+            "il_type": <HLIL/LLIL/etc>
+            "timestamp": <time>
+            "context_tag": null #usually null for role: "user"
+        },
+        {
+            "role": "sidekick",
+            "content": "<RESPONSE FROM SIDEKICK TO SECOND PROMPT IN PLAINTEXT>
+            "address": <mem address of function in decimal>
+            "il_type": <HLIL/LLIL/etc>
+            "timestamp": <time>
+            "context_tag": null #usually null for "sidekick"
+        },
+        {
+            "role": "user",
+            "content": "<THIRD PROMPT IN PLAINTEXT>",
+            "address": <mem address of function in decimal format>
+            "il_type": <HLIL/LLIL/etc>
+            "timestamp": <time>
+            "context_tag": null #usually null for role: "user"
+        }   
+        {<continuation of prompts and responses>}
+    ],
+    "location": {"address": <function mem address in decimical format>, "il_type": "HLIL/LLIL/etc", "func_name": <name of function>, "lines":[]}
     }
