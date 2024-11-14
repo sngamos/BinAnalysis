@@ -661,7 +661,7 @@ Content-Type: application/json
                 ]  
             }
 ```
-## Observations:
+## Observations
 ### Prompt formatting
 Prompts are in the following json format:
 ```
