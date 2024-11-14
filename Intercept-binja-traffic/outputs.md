@@ -662,11 +662,7 @@ Content-Type: application/json
             }
 ```
 ## Observations:
-Type of request: `POST`  
-API URL: `api.sidekick.binary.ninja/api/v2/notebooks/title`  
-Sidekick uses `python-requests` version: `2.32.2` library  
-Request contains API key as a Header, for verification purpose
-Response server is run on uvicorn
+### Prompt formatting
 Prompts are in the following json format:
 ```
 {
@@ -731,3 +727,14 @@ Prompts are in the following json format:
     ],
     "location": {"address": <function mem address in decimical format>, "il_type": "HLIL/LLIL/etc", "func_name": <name of function>, "lines":[]}
     }
+```
+### Findings & Conclusion
+Type of request: `POST`.  
+API URL: `api.sidekick.binary.ninja/api/v2/notebooks/title`.  
+Sidekick uses `python-requests` version: `2.32.2` library.  
+Request contains API key as a Header, for verification purpose.  
+Response server is run on uvicorn.  
+Chatbot implements "chat history" feature by appending previous responses and history of prompts in following prompts as observed in the prompt formatting section of this report.  
+This method of implementation is rudimentry has many flaws, and doesn't follow industry standards.
+1. Not scalable: as the conversation gets longer, input size grows quickly, causes token limit of the LLM to be exceeded, will also cause the LLM to become slower as token size is very large.  
+2. Contextual overload: model loses track of important context, outputs less accurate responses.  
