@@ -5,8 +5,8 @@
 This is the output from Wireshark after intercepting Network Traffic from binary ninja ELF application.    
 
 ### Analysis of Packet Log    
-packet 98: RST,ACK to end TCP connection (flaged red bcos there is no existing connection)  
-packet 103-105: TCP 3 way handshake sequence btwn client and api server  
+packet 98: RST,ACK to end TCP connection (flagged red bcos there is no existing connection)  
+packet 103-105: TCP 3 way handshake sequence between client and api server  
 packet 107-109: TLS Handshake, 109 contains encryption setup  
 packet 110-118: Application data exchange  
 packet 119-141: Keep alive + Application data  
@@ -28,7 +28,7 @@ chmod +x burpsuite_community_linux_v2024_9_5.sh
 ./burpsuite_community_linux_v2024_9_5.sh
 ```
 ### Configuring Burp Suite  
-Navigate to `Proxy` --> `Proxy Settings`
+Navigate to `Proxy` --> `Proxy Settings`  
 Under `Proxy listeners`, check that there is a port listening for traffic.  
 You should see `127.0.0.1:8080` by default, indicating Burp Suite is listening to traffic passing through port 8080 on local device.  
 Click `Edit` on this port  
@@ -45,24 +45,28 @@ Configure proxychains to forward traffic to port 8080:
 cd /etc/  
 sudo nano proxychains.conf
 ```
-1. Comment out `proxy_dns`
-2. Ensure `dynamic_chain` and `random_chain` are commented out, `strict_chain` is **NOT** commented out
-3. At the bottom of the file, append `http 127.0.0.1 8080`  
+1. Comment out `proxy_dns`, stops DNS traffic from routing through proxy, since it is not important to our investigation.
+2. Ensure `dynamic_chain` and `random_chain` are commented out, `strict_chain` is **NOT** commented out. Ensures that Strict Chaining is used so that all traffic packets from Binja is routed through port 8080 into Burp.  
+3. At the bottom of the file, append `http 127.0.0.1 8080`. Ensures that proxychains is configured to route traffic through port 8080.    
 4. Check that your proxychains.conf file is same as the one i have updloaded.  
 ### Configure Burp Suite CA certificate
 We need Binja to use Burp Suite's CA certificate so that we can inspect and decrypt the network packets intercepted by Burp Suite
 1. Export Burp Suite's CA Certificate: `Proxy` --> `Proxy Settings` --> `Proxy listeners` --> `Import/ export CA certificate` --> `Export Certificate in DER format` --> Save the CA certificate file as `cacert.der`  
-2. Convert certificate to `.pem`: 
+2. Convert certificate to `.pem` using the code below: 
 ```
 openssl x509 -inform DER -in cacert.der -out burp_cert.pem -text
 sudo cp burp_cert.pem /usr/local/share/ca-certificates/burp_cert.crt
 sudo update-ca-certificates
 ```
+You should see `burp_cert.crt` file in your `/usr/local/share/ca-certificates` folder now.  
 ### Run Binary Ninja with proxychains
-Navigate to where your Binary Ninja's ELF file is located
+Navigate to where your Binary Ninja's ELF file is located in CLI.  
 ```
 proxychains ./binaryninja
 ```
+You should see something like:
+![alt text for screen readers](CLI-ss.png "CLI output when proxychains is working correctly.")  
+`Note: the IP addresses you observe might be different from the image above, that is to be expected.`  
 Open Burp Suite, under `Proxy` --> `Intercept`, turn on `Intercept Off` --> `Intercept On`  
 Open a file in Binary Ninja, then in sidekick Chat Bot Assistant, enter a prompt.  
 In Burp Suite Application you should see a Request created.  
@@ -132,7 +136,7 @@ Content-Type: application/json
                     \n124a |         
                     if (buf_1 != 0x33)\n13fe |             
                     puts(\"I think if requires another char\u2026\")\n124a |         
-                    else\n125a |             
+                    else\n125a |             Wireshark output from intercepting Binary Ninja Traffic
                     puts(\"Level 2.5 Pass: You understand t\u2026\")\n1269 |             
                     puts(\"you will be prompted to enter a \u2026\")\n1278 |             
                     puts(\"The first key and the second key\u2026\")\n128c |             
