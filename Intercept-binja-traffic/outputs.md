@@ -64,7 +64,7 @@ Navigate to where your Binary Ninja's ELF file is located in CLI.
 ```
 proxychains ./binaryninja
 ```
-You should see something like:
+You should see something like:  
 ![alt text for screen readers](CLI-ss.png "CLI output when proxychains is working correctly.")  
 `Note: the IP addresses you observe might be different from the image above, that is to be expected.`  
 Open Burp Suite, under `Proxy` --> `Intercept`, turn on `Intercept Off` --> `Intercept On`  
