@@ -1,2 +1,10 @@
 cve-research/custom_kernel_ver/ubuntu-22.04.5-desktop-amd64.iso
 cve-research/custom_kernel_ver/ubuntu.qcow2
+cve-research/elf-output/6.1.6-elf
+cve-research/elf-output/6.1.6-elf-2
+cve-research/elf-output/6.1.6-elf-3
+cve-research/elf-output/6.1.6-elf-4
+cve-research/elf-output/6.1.6-elf-5
+cve-research/elf-output/6.1.6-elf-analysis.bnpr/project.bnpm
+cve-research/elf-output/6.1.6-elf-analysis.bnpr/data/35/5756f3-8865-4e9d-a579-f97fdd1edd3c
+cve-research/elf-output/6.1.6-elf-analysis.bnpr/data/79/007d43-2380-4c8b-ad2e-28072bfd8f82
